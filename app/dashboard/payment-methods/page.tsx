@@ -12,6 +12,10 @@ import {
   doc,
   updateDoc,
   deleteDoc,
+  Firestore,
+  DocumentReference,
+  DocumentData,
+  getDocs,
 } from "firebase/firestore";
 import { auth, db } from "@/lib/firebase";
 import { CreditCard, Edit, Plus, Trash2 } from "lucide-react";
@@ -207,35 +211,61 @@ export default function PaymentMethodsPage() {
   };
 
   // Initialize default payment methods if none exist
-  useEffect(() => {
-    const initializeDefaultPaymentMethods = async () => {
-      if (!user) return;
 
-      // Only initialize if no payment methods exist
-      if (paymentMethods.length === 0) {
-        const defaultPaymentMethods = [
-          "Cash",
-          "Credit Card",
-          "Debit Card",
-          "Bank Transfer",
-          "PayPal",
-          "Mobile Payment",
-        ];
+  interface DefaultPaymentMethodsProps {
+    user: User;
+    db: Firestore;
+  }
 
-        for (const method of defaultPaymentMethods) {
-          await addDoc(collection(db, "paymentMethods"), {
-            name: method,
-            userId: user.uid,
-            createdAt: new Date().toISOString(),
-          });
-        }
+  const initializeDefaultPaymentMethods = async ({
+    user,
+    db,
+  }: DefaultPaymentMethodsProps) => {
+    if (!user) return;
+
+    const defaultPaymentMethods: string[] = [
+      "Cash",
+      "Credit Card",
+      "Debit Card",
+      "Bank Transfer",
+      "PayPal",
+      "Mobile Payment",
+    ];
+
+    try {
+      // Check if payment methods already exist for the user
+      const methodsQuery = query(
+        collection(db, "paymentMethods"),
+        where("userId", "==", user.uid)
+      );
+      const querySnapshot = await getDocs(methodsQuery);
+
+      if (querySnapshot.empty) {
+        // Add default payment methods if none exist
+        const batch: Promise<DocumentReference<DocumentData>>[] =
+          defaultPaymentMethods.map((method) =>
+            addDoc(collection(db, "paymentMethods"), {
+              name: method,
+              userId: user.uid,
+              createdAt: new Date().toISOString(),
+            })
+          );
+
+        await Promise.all(batch); // Handle all Firestore writes efficiently
+        console.log("Default payment methods initialized");
+      } else {
+        console.log("Payment methods already exist");
       }
-    };
-
-    if (!loading && user) {
-      initializeDefaultPaymentMethods();
+    } catch (error) {
+      console.error("Error initializing default payment methods: ", error);
     }
-  }, [paymentMethods.length, loading, user]);
+  };
+
+  useEffect(() => {
+    if (!loading && user) {
+      initializeDefaultPaymentMethods({ user, db });
+    }
+  }, [loading, user, db]);
 
   if (loading) {
     return (
