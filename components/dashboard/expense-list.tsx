@@ -93,7 +93,7 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
   };
 
   return (
-    <Card className="sm:max-w-md lg:max-w-lg">
+    <Card>
       <CardHeader>
         <CardTitle>Recent Expenses</CardTitle>
         <CardDescription>Manage and track your recent expenses</CardDescription>
@@ -101,69 +101,67 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
       <CardContent>
         {expenses.length === 0 ? (
           <div className="flex h-32 flex-col items-center justify-center rounded-md border border-dashed p-8 text-center">
-            <h3 className="mb-2 text-lg font-semibold break-words">
-              No expenses yet
-            </h3>
-            <p className="text-sm text-muted-foreground break-words">
+            <h3 className="mb-2 text-lg font-semibold">No expenses yet</h3>
+            <p className="text-sm text-muted-foreground">
               Add your first expense to start tracking your spending.
             </p>
           </div>
         ) : (
-          <div className="overflow-x-auto">
-            <Table className="w-full table-fixed">
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Description</TableHead>
-                  <TableHead>Category</TableHead>
-                  <TableHead>Amount</TableHead>
-                  <TableHead>Date</TableHead>
-                  <TableHead className="text-right">Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {expenses.map((expense) => (
-                  <TableRow key={expense.id}>
-                    <TableCell className="text-sm font-medium break-words">
-                      {expense.description}
-                    </TableCell>
-                    <TableCell>
-                      <span
-                        className={`text-xs inline-flex items-center rounded-full px-2.5 py-0.5 break-words ${getCategoryColor(
-                          expense.category
-                        )}`}
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Description</TableHead>
+                <TableHead>Category</TableHead>
+                <TableHead>Amount</TableHead>
+                <TableHead>Date</TableHead>
+                <TableHead className="text-right">Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {expenses.map((expense) => (
+                <TableRow key={expense.id}>
+                  <TableCell className="font-medium text-xs sm:text-[4px]">
+                    {expense.description}
+                  </TableCell>
+                  <TableCell>
+                    <span
+                      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs sm:text-[4px] font-medium ${getCategoryColor(
+                        expense.category
+                      )}`}
+                    >
+                      {expense.category}
+                    </span>
+                  </TableCell>
+                  <TableCell className="text-xs sm:text-[4px]">
+                    ${expense.amount.toFixed(2)}
+                  </TableCell>
+                  <TableCell>
+                    {format(new Date(expense.date.toDate()), "MMM d, yyyy")}
+                  </TableCell>
+                  <TableCell className="text-right">
+                    <div className="flex justify-end gap-2">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => openEditDialog(expense)}
                       >
-                        {expense.category}
-                      </span>
-                    </TableCell>
-                    <TableCell>₹{expense.amount.toFixed(2)}</TableCell>
-                    <TableCell className="text-xs break-words">
-                      {format(new Date(expense.date.toDate()), "MMM dd, yyyy")}
-                    </TableCell>
-                    <TableCell className="text-right text-xs">
-                      <div className="flex justify-end gap-2">
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          onClick={() => openEditDialog(expense)}
-                        >
-                          <Edit className="h-4 w-4" />
-                          <span className="sr-only">Edit</span>
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          onClick={() => openDeleteDialog(expense)}
-                        >
-                          <Trash2 className="h-4 w-4" />
-                          <span className="sr-only">Delete</span>
-                        </Button>
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
+                        <Edit className="h-4 w-4" />
+                        <span className="sr-only">Edit</span>
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => openDeleteDialog(expense)}
+                      >
+                        <Trash2 className="h-4 w-4" />
+                        <span className="sr-only">Delete</span>
+                      </Button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
         )}
       </CardContent>
 

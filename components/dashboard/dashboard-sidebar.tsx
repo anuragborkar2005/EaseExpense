@@ -59,7 +59,7 @@ export const DashboardSidebar = () => {
   ];
 
   const SidebarContent = () => (
-    <div className="flex h-full flex-col gap-2 p-4">
+    <div className="flex h-full flex-col gap-2 p-4 w-[200px]">
       <div className="pt-10">
         <h2 className="px-4 text-lg font-semibold tracking-tighter">Menu</h2>
       </div>
