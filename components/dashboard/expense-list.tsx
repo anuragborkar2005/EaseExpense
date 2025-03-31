@@ -72,6 +72,7 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
     setSelectedExpense(expense);
     setEditDialogOpen(true);
   };
+
   const getCategoryColor = (category: string) => {
     const colors: Record<string, string> = {
       Food: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300",
@@ -90,6 +91,7 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
 
     return colors[category] || colors.Other;
   };
+
   return (
     <Card className="sm:max-w-md lg:max-w-lg">
       <CardHeader>
@@ -121,22 +123,20 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
               <TableBody>
                 {expenses.map((expense) => (
                   <TableRow key={expense.id}>
-                    <TableCell className="text-xs font-medium text-wrap">
+                    <TableCell className="text-sm font-medium break-words">
                       {expense.description}
                     </TableCell>
                     <TableCell>
                       <span
-                        className={`text-xs inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium text-wrap ${getCategoryColor(
+                        className={`text-xs inline-flex items-center rounded-full px-2.5 py-0.5 break-words ${getCategoryColor(
                           expense.category
                         )}`}
                       >
                         {expense.category}
                       </span>
                     </TableCell>
-                    <TableCell className="text-xs">
-                      ₹{expense.amount.toFixed(2)}
-                    </TableCell>
-                    <TableCell className="text-xs text-wrap">
+                    <TableCell>₹{expense.amount.toFixed(2)}</TableCell>
+                    <TableCell className="text-xs break-words">
                       {format(new Date(expense.date.toDate()), "MMM dd, yyyy")}
                     </TableCell>
                     <TableCell className="text-right text-xs">
