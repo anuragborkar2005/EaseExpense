@@ -93,7 +93,7 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
   };
 
   return (
-    <Card className="w-screen-[10px]">
+    <Card className="w-full sm:w-[90%] mx-auto overflow-hidden">
       <CardHeader>
         <CardTitle>Recent Expenses</CardTitle>
         <CardDescription>Manage and track your recent expenses</CardDescription>
@@ -108,15 +108,17 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
           </div>
         ) : (
           <div className="rounded-md border overflow-hidden">
-            <div className="overflow-x-scroll">
+            <div className="overflow-x-auto w-full">
               <Table className="w-full table-fixed border border-gray-200">
                 <TableHeader>
                   <TableRow>
-                    <TableHead className="w-64">Description</TableHead>
-                    <TableHead className="w-40">Category</TableHead>
-                    <TableHead className="w-32">Amount</TableHead>
-                    <TableHead className="w-40">Date</TableHead>
-                    <TableHead className="w-32 text-right">Actions</TableHead>
+                    <TableHead className="min-w-[150px]">Description</TableHead>
+                    <TableHead className="min-w-[120px]">Category</TableHead>
+                    <TableHead className="min-w-[100px]">Amount</TableHead>
+                    <TableHead className="min-w-[120px]">Date</TableHead>
+                    <TableHead className="min-w-[120px] text-right">
+                      Actions
+                    </TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
