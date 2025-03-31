@@ -118,12 +118,12 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
             <TableBody>
               {expenses.map((expense) => (
                 <TableRow key={expense.id}>
-                  <TableCell className="font-medium">
+                  <TableCell className="font-medium truncate">
                     {expense.description}
                   </TableCell>
                   <TableCell>
                     <span
-                      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${getCategoryColor(
+                      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium truncate ${getCategoryColor(
                         expense.category
                       )}`}
                     >
