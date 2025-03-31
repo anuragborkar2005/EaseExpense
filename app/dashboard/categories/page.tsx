@@ -13,6 +13,9 @@ import {
   doc,
   updateDoc,
   deleteDoc,
+  DocumentReference,
+  getDocs,
+  Firestore,
 } from "firebase/firestore";
 import { auth, db } from "@/lib/firebase";
 import { Edit, Plus, Trash2 } from "lucide-react";
@@ -243,37 +246,65 @@ export default function CategoriesPage() {
   };
 
   // Initialize default categories if none exist
-  useEffect(() => {
-    const initializeDefaultCategories = async () => {
-      if (!user) return;
 
-      // Only initialize if no categories exist
-      if (categories.length === 0) {
-        const defaultCategories = [
-          "Food",
-          "Transportation",
-          "Housing",
-          "Entertainment",
-          "Shopping",
-          "Utilities",
-          "Healthcare",
-          "Other",
-        ];
+  interface DefaultCategoryInitializer {
+    user: User;
+    db: Firestore;
+    categories: Category[];
+  }
 
-        for (const category of defaultCategories) {
-          await addDoc(collection(db, "categories"), {
-            name: category,
-            userId: user.uid,
-            createdAt: new Date().toISOString(),
-          });
-        }
+  const initializeDefaultCategories = async ({
+    user,
+    db,
+    categories,
+  }: DefaultCategoryInitializer): Promise<void> => {
+    if (!user || categories.length > 0) return;
+
+    const defaultCategories: string[] = [
+      "Food",
+      "Transportation",
+      "Housing",
+      "Entertainment",
+      "Shopping",
+      "Utilities",
+      "Healthcare",
+      "Other",
+    ];
+
+    try {
+      // Check if any categories already exist for the user in Firestore
+      const categoriesQuery = query(
+        collection(db, "categories"),
+        where("userId", "==", user.uid)
+      );
+      const querySnapshot = await getDocs(categoriesQuery);
+
+      if (querySnapshot.empty) {
+        // Add default categories only if none exist
+        const batch: Promise<DocumentReference>[] = defaultCategories.map(
+          (category) =>
+            addDoc(collection(db, "categories"), {
+              name: category,
+              userId: user.uid,
+              createdAt: new Date().toISOString(),
+            })
+        );
+
+        await Promise.all(batch);
+        console.log("Default categories initialized");
+      } else {
+        console.log("Categories already exist");
       }
-    };
-
-    if (!loading && user) {
-      initializeDefaultCategories();
+    } catch (error) {
+      console.error("Error initializing default categories: ", error);
     }
-  }, [categories.length, user]);
+  };
+
+  useEffect(() => {
+    if (!loading && user) {
+      initializeDefaultCategories({ user, db, categories });
+    }
+  }, [loading, user, categories, db]);
 
   if (loading) {
     return (
