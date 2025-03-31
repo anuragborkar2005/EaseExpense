@@ -274,15 +274,15 @@ export default function HistoryPage() {
                         <TableHead className="min-w-[150px]">
                           Description
                         </TableHead>
-                        <TableHead className="min-w-[120px] hidden md:table-cell">
+                        <TableHead className="min-w-[120px] ">
                           Category
                         </TableHead>
                         <TableHead className="min-w-[100px]">Amount</TableHead>
                         <TableHead className="min-w-[120px] hidden md:table-cell">
                           Date
                         </TableHead>
-                        <TableHead className="min-w-[120px] text-right">
-                          Actions
+                        <TableHead className="min-w-[120px] text-right hidden md:table-cell">
+                          Notes
                         </TableHead>
                       </TableRow>
                     </TableHeader>
@@ -292,7 +292,7 @@ export default function HistoryPage() {
                           <TableCell className="font-medium text-xs break-words truncate sm:w-[24px]">
                             {expense.description}
                           </TableCell>
-                          <TableCell className="hidden md:table-cell">
+                          <TableCell>
                             <span
                               className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${getCategoryColor(
                                 expense.category
@@ -308,7 +308,7 @@ export default function HistoryPage() {
                               "MMM d, yyyy"
                             )}
                           </TableCell>
-                          <TableCell className="max-w-xs truncate">
+                          <TableCell className="max-w-xs truncate hidden md:table-cell">
                             {expense.notes || "-"}
                           </TableCell>
                         </TableRow>
