@@ -120,7 +120,7 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
             <TableBody>
               {expenses.map((expense) => (
                 <TableRow key={expense.id}>
-                  <TableCell className="font-medium text-xs break-words text-truncate">
+                  <TableCell className="font-medium text-xs break-words text-truncate text-ellipsis">
                     {expense.description}
                   </TableCell>
                   <TableCell>
@@ -132,7 +132,7 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
                       {expense.category}
                     </span>
                   </TableCell>
-                  <TableCell className="text-xs break-words text-truncate">
+                  <TableCell className="text-xs  break-words text-truncate">
                     ${expense.amount.toFixed(2)}
                   </TableCell>
                   <TableCell className="text-xs break-words text-truncate">
