@@ -91,7 +91,7 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
     return colors[category] || colors.Other;
   };
   return (
-    <Card className="w-full sm:max-w-md lg:max-w-lg">
+    <Card className="sm:max-w-md lg:max-w-lg">
       <CardHeader>
         <CardTitle>Recent Expenses</CardTitle>
         <CardDescription>Manage and track your recent expenses</CardDescription>
@@ -121,12 +121,12 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
               <TableBody>
                 {expenses.map((expense) => (
                   <TableRow key={expense.id}>
-                    <TableCell className="font-medium break-words">
+                    <TableCell className="font-medium text-wrap">
                       {expense.description}
                     </TableCell>
                     <TableCell>
                       <span
-                        className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium break-words ${getCategoryColor(
+                        className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium text-wrap ${getCategoryColor(
                           expense.category
                         )}`}
                       >
@@ -134,7 +134,7 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
                       </span>
                     </TableCell>
                     <TableCell>₹{expense.amount.toFixed(2)}</TableCell>
-                    <TableCell>
+                    <TableCell className="text-wrap">
                       {format(new Date(expense.date.toDate()), "MMM dd, yyyy")}
                     </TableCell>
                     <TableCell className="text-right">
