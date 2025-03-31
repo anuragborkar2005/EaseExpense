@@ -93,7 +93,7 @@ export function ExpenseSummary({ expenses }: ExpenseSummaryProps) {
 
   return (
     <>
-      <Card>
+      <Card className="sm:w-screen-[5px]">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Total Expenses</CardTitle>
           <IndianRupee className="h-4 w-4 text-muted-foreground" />
@@ -105,7 +105,7 @@ export function ExpenseSummary({ expenses }: ExpenseSummaryProps) {
           </p>
         </CardContent>
       </Card>
-      <Card>
+      <Card className="sm:w-screen-[5px]">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">This Month</CardTitle>
           <Calendar className="h-4 w-4 text-muted-foreground" />
@@ -131,7 +131,7 @@ export function ExpenseSummary({ expenses }: ExpenseSummaryProps) {
           </div>
         </CardContent>
       </Card>
-      <Card>
+      <Card className="sm:w-screen-[5px]">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Top Category</CardTitle>
           <Tag className="h-4 w-4 text-muted-foreground" />
@@ -145,7 +145,7 @@ export function ExpenseSummary({ expenses }: ExpenseSummaryProps) {
           </p>
         </CardContent>
       </Card>
-      <Card>
+      <Card className="sm:w-screen-[5px]">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Average Expense</CardTitle>
           <CreditCard className="h-4 w-4 text-muted-foreground" />

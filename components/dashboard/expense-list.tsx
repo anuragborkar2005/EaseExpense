@@ -93,7 +93,7 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
   };
 
   return (
-    <Card>
+    <Card className="sm:w-screen-[10px]">
       <CardHeader>
         <CardTitle>Recent Expenses</CardTitle>
         <CardDescription>Manage and track your recent expenses</CardDescription>
