@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { format } from "date-fns";
 import { Edit, Trash2 } from "lucide-react";
 import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
@@ -112,8 +113,13 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
                 <TableHeader>
                   <TableRow>
                     <TableHead className="min-w-[150px]">Description</TableHead>
-                    <TableHead className="min-w-[120px]">Category</TableHead>
+                    <TableHead className="min-w-[120px] hidden md:table-cell">
+                      Category
+                    </TableHead>
                     <TableHead className="min-w-[100px]">Amount</TableHead>
+                    <TableHead className="min-w-[120px] hidden md:table-cell">
+                      Date
+                    </TableHead>
                     <TableHead className="min-w-[120px] text-right">
                       Actions
                     </TableHead>
@@ -125,7 +131,7 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
                       <TableCell className="font-medium text-xs break-words text-truncate text-ellipsis">
                         {expense.description}
                       </TableCell>
-                      <TableCell>
+                      <TableCell className="hidden md:table-cell">
                         <span
                           className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs break-words font-medium text-truncate ${getCategoryColor(
                             expense.category
@@ -137,7 +143,9 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
                       <TableCell className="text-xs  break-words text-truncate">
                         ₹{expense.amount.toFixed(2)}
                       </TableCell>
-
+                      <TableCell className="text-xs break-words text-truncate hidden md:table-cell">
+                        {format(new Date(expense.date.toDate()), "MMM d, yyyy")}
+                      </TableCell>
                       <TableCell className="text-right">
                         <div className="flex justify-end gap-2">
                           <Button
