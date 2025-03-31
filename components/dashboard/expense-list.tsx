@@ -128,7 +128,7 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
                 <TableBody>
                   {expenses.map((expense) => (
                     <TableRow key={expense.id}>
-                      <TableCell className="font-medium text-xs break-words text-truncate text-ellipsis">
+                      <TableCell className="font-medium text-xs break-words truncate sm:w-[24px]">
                         {expense.description}
                       </TableCell>
                       <TableCell className="hidden md:table-cell">
