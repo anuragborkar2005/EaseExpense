@@ -115,7 +115,6 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
                     <TableHead className="min-w-[150px]">Description</TableHead>
                     <TableHead className="min-w-[120px]">Category</TableHead>
                     <TableHead className="min-w-[100px]">Amount</TableHead>
-                    <TableHead className="min-w-[120px]">Date</TableHead>
                     <TableHead className="min-w-[120px] text-right">
                       Actions
                     </TableHead>
@@ -137,11 +136,9 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
                         </span>
                       </TableCell>
                       <TableCell className="text-xs  break-words text-truncate">
-                        ${expense.amount.toFixed(2)}
+                        ₹{expense.amount.toFixed(2)}
                       </TableCell>
-                      <TableCell className="text-xs break-words text-truncate">
-                        {format(new Date(expense.date.toDate()), "MMM d, yyyy")}
-                      </TableCell>
+
                       <TableCell className="text-right">
                         <div className="flex justify-end gap-2">
                           <Button
