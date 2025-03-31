@@ -194,7 +194,7 @@ export default function SettingsPage() {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <div className="flex min-h-screen flex-col">
+      <div className="flex min-h-screen flex-col w">
         <DashboardHeader user={user} />
         <div className="flex flex-1">
           <DashboardSidebar />
@@ -208,10 +208,18 @@ export default function SettingsPage() {
 
             <Tabs defaultValue={getDefaultTab()} className="space-y-4">
               <TabsList>
-                <TabsTrigger value="profile">Profile</TabsTrigger>
-                <TabsTrigger value="password">Password</TabsTrigger>
-                <TabsTrigger value="appearance">Appearance</TabsTrigger>
-                <TabsTrigger value="notifications">Notifications</TabsTrigger>
+                <TabsTrigger className="text-xs" value="profile">
+                  Profile
+                </TabsTrigger>
+                <TabsTrigger className="text-xs" value="password">
+                  Password
+                </TabsTrigger>
+                <TabsTrigger className="text-xs" value="appearance">
+                  Appearance
+                </TabsTrigger>
+                <TabsTrigger className="text-xs" value="notifications">
+                  Notifications
+                </TabsTrigger>
               </TabsList>
 
               <TabsContent value="profile">
