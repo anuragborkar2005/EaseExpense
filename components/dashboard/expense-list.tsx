@@ -107,7 +107,7 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
             </p>
           </div>
         ) : (
-          <Table className="min-w-full table-fixed">
+          <Table className="min-w-full table-fixed overflow-scroll">
             <TableHeader>
               <TableRow className="overflow-scroll">
                 <TableHead>Description</TableHead>
