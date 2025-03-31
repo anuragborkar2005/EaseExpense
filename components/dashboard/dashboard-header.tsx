@@ -40,7 +40,7 @@ export const DashboardHeader = ({ user }: DashboardHeaderProps) => {
     }
   };
   return (
-    <header className="sticky top-0 z-10 border-b bg-background px-12">
+    <header className="sticky top-0 z-10 border-b bg-background px-12 w-screen">
       <div className="container flex h-16 items-center justify-between py-4 gap-2">
         <div className="flex items-center gap-2 font-bold">
           <Link href="/dashboard">
