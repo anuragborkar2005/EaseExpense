@@ -107,61 +107,63 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
             </p>
           </div>
         ) : (
-          <Table className="min-w-full table-fixed overflow-scroll">
-            <TableHeader>
-              <TableRow className="overflow-scroll">
-                <TableHead>Description</TableHead>
-                <TableHead>Category</TableHead>
-                <TableHead>Amount</TableHead>
-                <TableHead>Date</TableHead>
-                <TableHead className="text-right">Actions</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {expenses.map((expense) => (
-                <TableRow key={expense.id} className="overflow-scroll">
-                  <TableCell className="font-medium text-xs break-words text-truncate text-ellipsis">
-                    {expense.description}
-                  </TableCell>
-                  <TableCell>
-                    <span
-                      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs break-words font-medium text-truncate ${getCategoryColor(
-                        expense.category
-                      )}`}
-                    >
-                      {expense.category}
-                    </span>
-                  </TableCell>
-                  <TableCell className="text-xs  break-words text-truncate">
-                    ${expense.amount.toFixed(2)}
-                  </TableCell>
-                  <TableCell className="text-xs break-words text-truncate">
-                    {format(new Date(expense.date.toDate()), "MMM d, yyyy")}
-                  </TableCell>
-                  <TableCell className="text-right">
-                    <div className="flex justify-end gap-2">
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => openEditDialog(expense)}
-                      >
-                        <Edit className="h-4 w-4" />
-                        <span className="sr-only">Edit</span>
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => openDeleteDialog(expense)}
-                      >
-                        <Trash2 className="h-4 w-4" />
-                        <span className="sr-only">Delete</span>
-                      </Button>
-                    </div>
-                  </TableCell>
+          <div className="rounded-md border">
+            <Table className="min-w-full table-fixed overflow-scroll">
+              <TableHeader>
+                <TableRow className="overflow-scroll">
+                  <TableHead>Description</TableHead>
+                  <TableHead>Category</TableHead>
+                  <TableHead>Amount</TableHead>
+                  <TableHead>Date</TableHead>
+                  <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHeader>
+              <TableBody>
+                {expenses.map((expense) => (
+                  <TableRow key={expense.id} className="overflow-scroll">
+                    <TableCell className="font-medium text-xs break-words text-truncate text-ellipsis">
+                      {expense.description}
+                    </TableCell>
+                    <TableCell>
+                      <span
+                        className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs break-words font-medium text-truncate ${getCategoryColor(
+                          expense.category
+                        )}`}
+                      >
+                        {expense.category}
+                      </span>
+                    </TableCell>
+                    <TableCell className="text-xs  break-words text-truncate">
+                      ${expense.amount.toFixed(2)}
+                    </TableCell>
+                    <TableCell className="text-xs break-words text-truncate">
+                      {format(new Date(expense.date.toDate()), "MMM d, yyyy")}
+                    </TableCell>
+                    <TableCell className="text-right">
+                      <div className="flex justify-end gap-2">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={() => openEditDialog(expense)}
+                        >
+                          <Edit className="h-4 w-4" />
+                          <span className="sr-only">Edit</span>
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={() => openDeleteDialog(expense)}
+                        >
+                          <Trash2 className="h-4 w-4" />
+                          <span className="sr-only">Delete</span>
+                        </Button>
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
         )}
       </CardContent>
 
