@@ -268,7 +268,7 @@ export default function HistoryPage() {
                 </div>
               ) : (
                 <div className="rounded-md border">
-                  <Table>
+                  <Table className="min-w-full table-fixed overflow-scroll">
                     <TableHeader>
                       <TableRow>
                         <TableHead>Description</TableHead>
