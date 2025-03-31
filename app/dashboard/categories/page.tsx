@@ -372,21 +372,23 @@ export default function CategoriesPage() {
                   <Table>
                     <TableHeader>
                       <TableRow>
-                        <TableHead>Category Name</TableHead>
-                        <TableHead>Usage Count</TableHead>
-                        <TableHead className="text-right">Actions</TableHead>
+                        <TableHead className="text-sm">Category Name</TableHead>
+                        <TableHead className="text-sm">Usage Count</TableHead>
+                        <TableHead className="text-sm text-right">
+                          Actions
+                        </TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       {categories.map((category) => (
                         <TableRow key={category.id}>
-                          <TableCell className="font-medium">
+                          <TableCell className="font-medium text-xs">
                             {category.name}
                           </TableCell>
-                          <TableCell>
+                          <TableCell className="text-xs">
                             {getCategoryUsageCount(category.name)} expenses
                           </TableCell>
-                          <TableCell className="text-right">
+                          <TableCell className="text-right text-xs">
                             <div className="flex justify-end gap-2">
                               <Dialog>
                                 <DialogTrigger asChild>
