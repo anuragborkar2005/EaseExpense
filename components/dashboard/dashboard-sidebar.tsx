@@ -86,7 +86,7 @@ export const DashboardSidebar = () => {
     <>
       {/* Mobile Menu Button */}
       <Button
-        className="fixed top-4 right-4 z-50 md:hidden"
+        className="fixed top-4 left-4 z-50 md:hidden"
         variant="outline"
         size="icon"
         onClick={() => setIsMobileOpen(!isMobileOpen)}
