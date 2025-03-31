@@ -271,20 +271,28 @@ export default function HistoryPage() {
                   <Table className="min-w-full table-fixed">
                     <TableHeader>
                       <TableRow>
-                        <TableHead>Description</TableHead>
-                        <TableHead>Category</TableHead>
-                        <TableHead>Amount</TableHead>
-                        <TableHead>Date</TableHead>
-                        <TableHead>Notes</TableHead>
+                        <TableHead className="min-w-[150px]">
+                          Description
+                        </TableHead>
+                        <TableHead className="min-w-[120px] hidden md:table-cell">
+                          Category
+                        </TableHead>
+                        <TableHead className="min-w-[100px]">Amount</TableHead>
+                        <TableHead className="min-w-[120px] hidden md:table-cell">
+                          Date
+                        </TableHead>
+                        <TableHead className="min-w-[120px] text-right">
+                          Actions
+                        </TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       {filteredExpenses.map((expense) => (
                         <TableRow key={expense.id}>
-                          <TableCell className="font-medium">
+                          <TableCell className="font-medium text-xs break-words truncate sm:w-[24px]">
                             {expense.description}
                           </TableCell>
-                          <TableCell>
+                          <TableCell className="hidden md:table-cell">
                             <span
                               className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${getCategoryColor(
                                 expense.category
@@ -294,7 +302,7 @@ export default function HistoryPage() {
                             </span>
                           </TableCell>
                           <TableCell>₹{expense.amount.toFixed(2)}</TableCell>
-                          <TableCell>
+                          <TableCell className="hidden md:table-cell">
                             {format(
                               new Date(expense.date.toDate()),
                               "MMM d, yyyy"
