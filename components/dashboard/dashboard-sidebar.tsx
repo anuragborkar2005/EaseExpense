@@ -48,7 +48,7 @@ export const DashboardSidebar = () => {
     },
   ];
   return (
-    <div className="border-r bg-muted/10 md:block">
+    <div className="hidden border-r bg-muted/10 md:block">
       <div className="flex h-full flex-col gap-2 p-4">
         <div className="py-2">
           <h2 className="px-4 text-lg font-semibold tracking-tighter">Menu</h2>
