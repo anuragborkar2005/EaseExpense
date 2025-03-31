@@ -315,7 +315,7 @@ export default function CategoriesPage() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col overflow-hidden w-full">
       {user ? <DashboardHeader user={user} /> : null}
       <div className="flex flex-1">
         <DashboardSidebar />
