@@ -109,7 +109,7 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
         ) : (
           <Table className="min-w-full table-fixed">
             <TableHeader>
-              <TableRow>
+              <TableRow className="overflow-scroll">
                 <TableHead>Description</TableHead>
                 <TableHead>Category</TableHead>
                 <TableHead>Amount</TableHead>
@@ -119,7 +119,7 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
             </TableHeader>
             <TableBody>
               {expenses.map((expense) => (
-                <TableRow key={expense.id}>
+                <TableRow key={expense.id} className="overflow-scroll">
                   <TableCell className="font-medium text-xs break-words text-truncate text-ellipsis">
                     {expense.description}
                   </TableCell>
