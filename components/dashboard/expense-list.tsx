@@ -109,14 +109,14 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
         ) : (
           <div className="rounded-md border overflow-hidden">
             <div className="overflow-x-auto">
-              <Table className="min-w-full table-fixed overflow-scroll">
+              <Table className="min-w-full table-fixed">
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Description</TableHead>
-                    <TableHead>Category</TableHead>
-                    <TableHead>Amount</TableHead>
-                    <TableHead>Date</TableHead>
-                    <TableHead className="text-right">Actions</TableHead>
+                    <TableHead className="w-64">Description</TableHead>
+                    <TableHead className="w-40">Category</TableHead>
+                    <TableHead className="w-32">Amount</TableHead>
+                    <TableHead className="w-40">Date</TableHead>
+                    <TableHead className="w-32 text-right">Actions</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
