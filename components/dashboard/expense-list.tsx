@@ -91,7 +91,7 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
     return colors[category] || colors.Other;
   };
   return (
-    <Card>
+    <Card className="w-full sm:max-w-md lg:max-w-lg">
       <CardHeader>
         <CardTitle>Recent Expenses</CardTitle>
         <CardDescription>Manage and track your recent expenses</CardDescription>
@@ -105,7 +105,7 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
             </p>
           </div>
         ) : (
-          <Table>
+          <Table className="w-full table-fixed">
             <TableHeader>
               <TableRow>
                 <TableHead>Description</TableHead>
