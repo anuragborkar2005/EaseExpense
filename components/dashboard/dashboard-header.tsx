@@ -54,7 +54,7 @@ export const DashboardHeader = ({ user }: DashboardHeaderProps) => {
               <Button
                 variant="ghost"
                 size="icon"
-                className="rounded-full right-2"
+                className="rounded-full right-1"
               >
                 <User className="h-5 w-5" />
                 <span className="sr-only">User menu</span>

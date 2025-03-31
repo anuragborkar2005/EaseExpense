@@ -315,34 +315,39 @@ export default function CategoriesPage() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col overflow-hidden w-full">
+    <div className="flex min-h-screen flex-col w-full overflow-hidden">
       {user ? <DashboardHeader user={user} /> : null}
-      <div className="flex flex-1">
+      <div className="flex flex-1 flex-col md:flex-row">
         <DashboardSidebar />
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-4 md:p-6 overflow-auto">
           <div className="mb-6">
-            <h1 className="text-3xl font-bold">Categories</h1>
-            <p className="text-muted-foreground">
+            <h1 className="text-2xl md:text-3xl font-bold">Categories</h1>
+            <p className="text-muted-foreground text-sm md:text-base">
               Manage your expense categories
             </p>
           </div>
 
           <Card className="mb-6">
             <CardHeader>
-              <CardTitle>Add New Category</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-lg md:text-xl">
+                Add New Category
+              </CardTitle>
+              <CardDescription className="text-sm md:text-base">
                 Create a new category for your expenses
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="flex gap-2">
+              <div className="flex flex-col md:flex-row gap-2">
                 <Input
                   placeholder="Category name"
                   value={newCategory}
                   onChange={(e) => setNewCategory(e.target.value)}
-                  className="max-w-sm"
+                  className="w-full md:max-w-sm"
                 />
-                <Button onClick={handleAddCategory}>
+                <Button
+                  onClick={handleAddCategory}
+                  className="w-full md:w-auto"
+                >
                   <Plus className="mr-2 h-4 w-4" />
                   Add Category
                 </Button>
@@ -352,29 +357,35 @@ export default function CategoriesPage() {
 
           <Card>
             <CardHeader>
-              <CardTitle>Your Categories</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-lg md:text-xl">
+                Your Categories
+              </CardTitle>
+              <CardDescription className="text-sm md:text-base">
                 Manage and organize your expense categories
               </CardDescription>
             </CardHeader>
             <CardContent>
               {categories.length === 0 ? (
-                <div className="flex h-32 flex-col items-center justify-center rounded-md border border-dashed p-8 text-center">
-                  <h3 className="mb-2 text-lg font-semibold">
+                <div className="flex h-32 flex-col items-center justify-center rounded-md border border-dashed p-4 text-center">
+                  <h3 className="mb-2 text-base md:text-lg font-semibold">
                     No categories yet
                   </h3>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-xs md:text-sm text-muted-foreground">
                     Add your first category to organize your expenses.
                   </p>
                 </div>
               ) : (
-                <div className="rounded-md border">
+                <div className="rounded-md border overflow-x-auto">
                   <Table>
                     <TableHeader>
                       <TableRow>
-                        <TableHead className="text-sm">Category Name</TableHead>
-                        <TableHead className="text-sm">Usage Count</TableHead>
-                        <TableHead className="text-sm text-right">
+                        <TableHead className="text-xs md:text-sm">
+                          Category Name
+                        </TableHead>
+                        <TableHead className="text-xs md:text-sm">
+                          Usage Count
+                        </TableHead>
+                        <TableHead className="text-xs md:text-sm text-right">
                           Actions
                         </TableHead>
                       </TableRow>
@@ -382,13 +393,13 @@ export default function CategoriesPage() {
                     <TableBody>
                       {categories.map((category) => (
                         <TableRow key={category.id}>
-                          <TableCell className="font-medium text-xs">
+                          <TableCell className="font-medium text-xs md:text-sm">
                             {category.name}
                           </TableCell>
-                          <TableCell className="text-xs">
+                          <TableCell className="text-xs md:text-sm">
                             {getCategoryUsageCount(category.name)} expenses
                           </TableCell>
-                          <TableCell className="text-right text-xs">
+                          <TableCell className="text-right text-xs md:text-sm">
                             <div className="flex justify-end gap-2">
                               <Dialog>
                                 <DialogTrigger asChild>
