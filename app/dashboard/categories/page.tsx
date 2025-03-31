@@ -13,7 +13,6 @@ import {
   doc,
   updateDoc,
   deleteDoc,
-  Firestore,
 } from "firebase/firestore";
 import { auth, db } from "@/lib/firebase";
 import { Edit, Plus, Trash2 } from "lucide-react";
@@ -244,45 +243,37 @@ export default function CategoriesPage() {
   };
 
   // Initialize default categories if none exist
-
-  const initializeDefaultCategories = async (
-    user: User,
-    categories: Category[],
-    db: Firestore
-  ) => {
-    if (!user || categories.length > 0) return;
-
-    const defaultCategories = [
-      "Food",
-      "Transportation",
-      "Housing",
-      "Entertainment",
-      "Shopping",
-      "Utilities",
-      "Healthcare",
-      "Other",
-    ];
-
-    try {
-      const batch = defaultCategories.map((category) =>
-        addDoc(collection(db, "categories"), {
-          name: category,
-          userId: user.uid,
-          createdAt: new Date().toISOString(),
-        })
-      );
-
-      await Promise.all(batch); // Handle all Firestore writes at once
-    } catch (error) {
-      console.error("Error initializing default categories: ", error);
-    }
-  };
-
   useEffect(() => {
+    const initializeDefaultCategories = async () => {
+      if (!user) return;
+
+      // Only initialize if no categories exist
+      if (categories.length === 0) {
+        const defaultCategories = [
+          "Food",
+          "Transportation",
+          "Housing",
+          "Entertainment",
+          "Shopping",
+          "Utilities",
+          "Healthcare",
+          "Other",
+        ];
+
+        for (const category of defaultCategories) {
+          await addDoc(collection(db, "categories"), {
+            name: category,
+            userId: user.uid,
+            createdAt: new Date().toISOString(),
+          });
+        }
+      }
+    };
+
     if (!loading && user) {
-      initializeDefaultCategories(user, categories, db);
+      initializeDefaultCategories();
     }
-  }, [categories.length, loading, user, db]);
+  }, [categories.length, user]);
 
   if (loading) {
     return (
