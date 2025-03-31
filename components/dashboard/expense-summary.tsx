@@ -99,7 +99,7 @@ export function ExpenseSummary({ expenses }: ExpenseSummaryProps) {
           <IndianRupee className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">₹{totalExpenses.toFixed(2)}</div>
+          <div className="text-xl font-bold">₹{totalExpenses.toFixed(2)}</div>
           <p className="text-xs text-muted-foreground">
             Lifetime total expenses
           </p>
@@ -137,7 +137,7 @@ export function ExpenseSummary({ expenses }: ExpenseSummaryProps) {
           <Tag className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">
+          <div className="text-xl font-bold">
             {topCategory.category || "N/A"}
           </div>
           <p className="text-xs text-muted-foreground">
@@ -151,7 +151,7 @@ export function ExpenseSummary({ expenses }: ExpenseSummaryProps) {
           <CreditCard className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">
+          <div className="text-xl font-bold">
             ₹
             {expenses.length
               ? (totalExpenses / expenses.length).toFixed(2)

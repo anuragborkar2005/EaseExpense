@@ -120,22 +120,22 @@ export const ExpenseList = ({ expenses }: ExpenseListProps) => {
             <TableBody>
               {expenses.map((expense) => (
                 <TableRow key={expense.id}>
-                  <TableCell className="font-medium text-xs break-words">
+                  <TableCell className="font-medium text-xs break-words text-truncate">
                     {expense.description}
                   </TableCell>
                   <TableCell>
                     <span
-                      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs break-words font-medium ${getCategoryColor(
+                      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs break-words font-medium text-truncate ${getCategoryColor(
                         expense.category
                       )}`}
                     >
                       {expense.category}
                     </span>
                   </TableCell>
-                  <TableCell className="text-xs break-words">
+                  <TableCell className="text-xs break-words text-truncate">
                     ${expense.amount.toFixed(2)}
                   </TableCell>
-                  <TableCell className="text-xs break-words">
+                  <TableCell className="text-xs break-words text-truncate">
                     {format(new Date(expense.date.toDate()), "MMM d, yyyy")}
                   </TableCell>
                   <TableCell className="text-right">
