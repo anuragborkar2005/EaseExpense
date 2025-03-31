@@ -51,7 +51,11 @@ export const DashboardHeader = ({ user }: DashboardHeaderProps) => {
         <div className="flex items-center gap-4">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="rounded-full">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="rounded-full right-2"
+              >
                 <User className="h-5 w-5" />
                 <span className="sr-only">User menu</span>
               </Button>

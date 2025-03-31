@@ -71,7 +71,7 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col w-screen">
+    <div className="flex min-h-screen flex-col max-w-screen">
       {user ? <DashboardHeader user={user} /> : null}
       <div className="flex flex-1">
         <DashboardSidebar />
