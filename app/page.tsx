@@ -6,8 +6,8 @@ import { IndianRupee } from "lucide-react";
 const Home = () => {
   return (
     <div className="flex flex-col min-h-screen w-screen ">
-      <header className="border-b flex items-center justify-center lg:px-16 px-12">
-        <div className="container flex h-16 items-center justify-between py-4">
+      <header className="border-b flex items-center justify-center lg:px-16 px-8">
+        <div className="container flex h-16 items-center justify-between py-4 gap-4">
           <div className="flex items-center gap-2 font-bold">
             <IndianRupee className="size-6 font-bold text-blue-500" />
             <span className="text-primary">Ease</span> Expense

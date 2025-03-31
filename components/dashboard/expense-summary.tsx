@@ -92,14 +92,16 @@ export function ExpenseSummary({ expenses }: ExpenseSummaryProps) {
   }, [expenses]);
 
   return (
-    <>
+    <div className="min-w-screen grid grid-cols-2 gap-4">
       <Card>
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 ">
           <CardTitle className="text-sm font-medium">Total Expenses</CardTitle>
           <IndianRupee className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">₹{totalExpenses.toFixed(2)}</div>
+          <div className="text-2xl font-bold truncate">
+            ₹{totalExpenses.toFixed(2)}
+          </div>
           <p className="text-xs text-muted-foreground">
             Lifetime total expenses
           </p>
@@ -111,7 +113,9 @@ export function ExpenseSummary({ expenses }: ExpenseSummaryProps) {
           <Calendar className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">₹{thisMonthTotal.toFixed(2)}</div>
+          <div className="text-2xl font-bold truncate">
+            ₹{thisMonthTotal.toFixed(2)}
+          </div>
           <div className="flex items-center pt-1">
             {percentageChange > 0 ? (
               <ArrowUpIcon className="mr-1 h-3 w-3 text-destructive" />
@@ -140,7 +144,7 @@ export function ExpenseSummary({ expenses }: ExpenseSummaryProps) {
           <div className="text-2xl font-bold">
             {topCategory.category || "N/A"}
           </div>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-muted-foreground truncate">
             ₹{topCategory.amount.toFixed(2)} total spent
           </p>
         </CardContent>
@@ -151,7 +155,7 @@ export function ExpenseSummary({ expenses }: ExpenseSummaryProps) {
           <CreditCard className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">
+          <div className="text-2xl font-bold truncate">
             ₹
             {expenses.length
               ? (totalExpenses / expenses.length).toFixed(2)
@@ -162,6 +166,6 @@ export function ExpenseSummary({ expenses }: ExpenseSummaryProps) {
           </p>
         </CardContent>
       </Card>
-    </>
+    </div>
   );
 }
