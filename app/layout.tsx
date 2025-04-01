@@ -9,7 +9,7 @@ import { Toaster } from "sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Expense Manager",
+  title: "Ease Expense",
   description: "Track and manage your expenses with ease",
 };
 
