@@ -294,7 +294,7 @@ export default function HistoryPage() {
                           </TableCell>
                           <TableCell>
                             <span
-                              className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-[8px] font-medium ${getCategoryColor(
+                              className={`inline-flex items-center rounded-full px-2.5 py-0.5 sm:text-[8px] text-xs font-medium ${getCategoryColor(
                                 expense.category
                               )}`}
                             >
