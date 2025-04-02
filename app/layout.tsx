@@ -2,6 +2,7 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "sonner";
@@ -29,6 +30,7 @@ export default function RootLayout({
         >
           {children}
           <Toaster />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
