@@ -171,7 +171,7 @@ export default function HistoryPage() {
 
   const getSize = (category: string) => {
     if (category.length > 7) {
-      return "sm:text-[8px]";
+      return "sm:text-[4px]";
     }
     return "text-xs";
   };
