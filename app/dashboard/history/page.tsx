@@ -169,6 +169,13 @@ export default function HistoryPage() {
     );
   }
 
+  const getSize = (category: string) => {
+    if (category.length > 7) {
+      return "sm:text-[8px]";
+    }
+    return "text-xs";
+  };
+
   return (
     <div className="flex min-h-screen flex-col">
       {user ? <DashboardHeader user={user} /> : null}
@@ -294,7 +301,9 @@ export default function HistoryPage() {
                           </TableCell>
                           <TableCell>
                             <span
-                              className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-ellipsis sm:w-[24px] text-xs  font-medium ${getCategoryColor(
+                              className={`inline-flex items-center rounded-full px-2.5 py-0.5 ${getSize(
+                                expense.category
+                              )}  font-medium ${getCategoryColor(
                                 expense.category
                               )}`}
                             >
