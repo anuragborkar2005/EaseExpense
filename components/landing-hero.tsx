@@ -8,7 +8,7 @@ export default function LandingHero() {
           <div className="flex flex-col justify-center space-y-4">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                Smart Expense Tracking for Better Financial Control
+               Expense Tracking for Better Financial Control
               </h1>
               <p className="max-w-[600px] text-muted-foreground md:text-xl">
                 Track, categorize, and analyze your expenses in real-time. Make
